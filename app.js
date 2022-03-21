@@ -25,9 +25,10 @@ const displayBook = (book) => {
   const bookContainer = document.createElement('div');
   bookContainer.className = 'book';
   bookContainer.innerHTML = 
-    `<p>${title}</p>
-    <p>${author} </p>
-    <button class="delete">Delete Book</button>`
+    `<span class="title">${title}</span><br>
+    <span class="by">by</span><br>
+    <span class="author">${author} </span><br>
+    <button class="delete">Delete</button>`
   ;
   return bookContainer;
 };
@@ -43,3 +44,22 @@ const displayBooks = () => {
 };
 
 window.onload = displayBooks;
+
+// Remove Book
+const removeBook = (button) => {
+  const bookList = JSON.parse(localStorage.getItem('bookShop'));
+  const parentDiv = button.parentNode;
+  const myTitle = parentDiv.querySelector('.title').textContent;
+  const myAuthor = parentDiv.querySelector('.author').textContent;
+  const booksLeft = bookList.filter((book) => book.title !== myTitle && book.author !== myAuthor);
+  window.localStorage.setItem('bookShop', JSON.stringify(booksLeft));
+
+  parentDiv.remove();
+};
+
+document.addEventListener('click', (e) => {
+  const button = e.target;
+  if (button.className === 'delete') {
+    removeBook(button);
+  }
+});
