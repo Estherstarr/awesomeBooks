@@ -28,8 +28,8 @@ const displayBook = (book) => {
     `<span class="title">${title}</span><br>
     <span class="by">by</span><br>
     <span class="author">${author} </span><br>
-    <button class="delete">Delete</button>
-    <p>_________________________________________________</p>`
+    <button class="delete">Remove</button>
+    <p>_________________________</p>`
   ;
   return bookContainer;
 };
