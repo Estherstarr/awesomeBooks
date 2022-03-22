@@ -1,0 +1,28 @@
+body {
+  box-sizing: border-box;
+}
+
+body > * {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+#books-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+#add-book {
+  width: 3em;
+}
+
+.by {
+  border: 1px solid rgb(140, 141, 129);
+  background: rgb(238, 229, 191);
+}
+
+p {
+  margin: 0 0 16px;
+}
