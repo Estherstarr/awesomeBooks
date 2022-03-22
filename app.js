@@ -85,16 +85,6 @@ class UI {
   }
 }
 
-const addBook = (bookTitl, bookAutho) => {
-  const book = {};
-  book.title = bookTitl.value;
-  book.author = bookAutho.value;
-  bookList.push(book);
-
-  bookTitl.value = '';
-  bookAutho.value = '';
-};
-
 const viewBook = new UI();
 const store = new Store();
 document.addEventListener('DOMContentLoaded', viewBook.displayBooks());
