@@ -8,16 +8,10 @@ const addBook = (bookTitle, bookAuthor) => {
   book.title = bookTitle.value;
   book.author = bookAuthor.value;
   bookList.push(book);
-};
 
-addbookBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (bookTitle.value === null || bookAuthor.value === null) {
-    return;
-  }
-  addBook(bookTitle, bookAuthor);
-  localStorage.setItem('bookShop', JSON.stringify(bookList));
-});
+  bookTitle.value = '';
+  bookAuthor.value = '';
+};
 
 const displayBook = (book) => {
   const { title, author } = book;
@@ -37,11 +31,22 @@ const displayBooks = () => {
 
   bookList.forEach((book) => {
     libraryContainer.appendChild(displayBook(book));
-    currentBooks.appendChild(libraryContainer);
+    currentBooks.innerHTML = libraryContainer.innerHTML;
   });
 };
 
-window.onload = displayBooks;
+addbookBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (bookTitle.value === null || bookAuthor.value === null) {
+    return;
+  }
+  addBook(bookTitle, bookAuthor);
+  localStorage.setItem('bookShop', JSON.stringify(bookList));
+
+  displayBooks();
+});
+
+window.onload = displayBooks();
 
 // Remove Book
 const removeBook = (button) => {
