@@ -1,70 +1,118 @@
 const addbookBtn = document.querySelector('#add-book');
-const bookTitle = document.querySelector('#title');
-const bookAuthor = document.querySelector('#author');
-const bookList = JSON.parse(localStorage.getItem('bookShop')) || [];
+const bookTitl = document.querySelector('#title');
+const bookAutho = document.querySelector('#author');
 
-const addBook = (bookTitle, bookAuthor) => {
+class Book {
+    constructor(title, author) {
+      this.title = title;
+      this.author = author;
+    }
+}
+
+class Store {
+  getBooks = () => {
+    let books;
+    if (JSON.parse(localStorage.getItem('bookShop')) === null) {
+      books = [];
+    }else {
+      books = JSON.parse(localStorage.getItem('bookShop'));
+    }
+    return books;
+  }
+
+  addBook = (book) => {
+    const books = this.getBooks();
+    books.push(book);
+    localStorage.setItem('bookShop', JSON.stringify(books));
+  }
+
+  removeBook = (button) => {
+    const books = JSON.parse(localStorage.getItem('bookShop'));
+    const parentDiv = button.parentNode;
+    const myTitle = parentDiv.querySelector('.title').textContent;
+    const myAuthor = parentDiv.querySelector('.author').textContent;
+    const booksLeft = books.filter(
+      (book) => book.title !== myTitle && book.author !== myAuthor,
+    );
+    window.localStorage.setItem('bookShop', JSON.stringify(booksLeft));
+  }
+}
+
+class UI {
+  displayBooks = () => {
+    const store = new Store();
+    const books = store.getBooks();
+    books.forEach((book) => {
+      this.createBook(book);
+    });
+  }
+
+  createBook = (book) => {
+    const booksContainer = document.querySelector('#books-list');
+    const bookContainer = document.createElement('div');
+    bookContainer.className = 'single-book';
+    const authorContainer = document.createElement('div');
+    authorContainer.className = 'author-name';
+    const span = document.createElement('span');
+    span.textContent = 'by';
+    const bookTitle = document.createElement('h3');
+    bookTitle.className = 'title';
+    const bookAuthor = document.createElement('h3');
+    bookAuthor.className = 'author';
+    const removeButton = document.createElement('button');
+    removeButton.className = 'delete';
+    removeButton.textContent = 'Remove';
+    bookTitle.textContent = book.title;
+    bookAuthor.textContent = book.author;
+    authorContainer.append(bookTitle, span, bookAuthor);
+    bookContainer.append(authorContainer, removeButton);
+
+    booksContainer.appendChild(bookContainer);
+  }
+
+  addBook = (book) => {
+    this.createBook(book);
+  }
+
+  removeBook = (button) => {
+    const parentDiv = button.parentNode;
+    parentDiv.remove();
+  }
+
+  clearInputs = () => {
+    bookTitl.value = '';
+    bookAutho.value = '';
+  }
+}
+
+const addBook = (bookTitl, bookAutho) => {
   const book = {};
-  book.title = bookTitle.value;
-  book.author = bookAuthor.value;
+  book.title = bookTitl.value;
+  book.author = bookAutho.value;
   bookList.push(book);
 
-  bookTitle.value = '';
-  bookAuthor.value = '';
+  bookTitl.value = '';
+  bookAutho.value = '';
 };
 
-const displayBook = (book) => {
-  const { title, author } = book;
-  const bookContainer = document.createElement('div');
-  bookContainer.className = 'book';
-  bookContainer.innerHTML = `<span class='title'>${title}</span><br>
-    <span class='by'>by</span><br>
-    <span class='author'>${author} </span><br>
-    <button class='delete'>Remove</button>
-    <p>_________________________</p>`;
-  return bookContainer;
-};
+const viewBook = new UI();
+const store = new Store();
+document.addEventListener('DOMContentLoaded', viewBook.displayBooks());
 
-const displayBooks = () => {
-  const currentBooks = document.querySelector('#books-list');
-  const libraryContainer = document.createElement('div');
+addbookBtn.addEventListener('click', () => {
+  const title = bookTitl.value;
+  const author = bookAutho.value;
+  const newBook = new Book(title, author);
 
-  bookList.forEach((book) => {
-    libraryContainer.appendChild(displayBook(book));
-    currentBooks.innerHTML = libraryContainer.innerHTML;
-  });
-};
-
-addbookBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (bookTitle.value === null || bookAuthor.value === null) {
-    return;
-  }
-  addBook(bookTitle, bookAuthor);
-  localStorage.setItem('bookShop', JSON.stringify(bookList));
-
-  displayBooks();
+  viewBook.addBook(newBook);
+  store.addBook(newBook);
+  viewBook.clearInputs();
 });
-
-window.onload = displayBooks();
-
-// Remove Book
-const removeBook = (button) => {
-  const bookList = JSON.parse(localStorage.getItem('bookShop'));
-  const parentDiv = button.parentNode;
-  const myTitle = parentDiv.querySelector('.title').textContent;
-  const myAuthor = parentDiv.querySelector('.author').textContent;
-  const booksLeft = bookList.filter(
-    (book) => book.title !== myTitle && book.author !== myAuthor,
-  );
-  window.localStorage.setItem('bookShop', JSON.stringify(booksLeft));
-
-  parentDiv.remove();
-};
 
 document.addEventListener('click', (e) => {
   const button = e.target;
   if (button.className === 'delete') {
-    removeBook(button);
+    mainPage.removeBook(button);
+    store.removeBook(button);
   }
 });
