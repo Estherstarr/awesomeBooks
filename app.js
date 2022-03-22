@@ -102,7 +102,7 @@ addbookBtn.addEventListener('click', () => {
 document.addEventListener('click', (e) => {
   const button = e.target;
   if (button.className === 'delete') {
-    mainPage.removeBook(button);
+    viewBook.removeBook(button);
     store.removeBook(button);
   }
 });
