@@ -16,21 +16,18 @@ addbookBtn.addEventListener('click', (e) => {
     return;
   }
   addBook(bookTitle, bookAuthor);
-  localStorage.setItem('bookShop', JSON.stringify(bookList)
-    );
+  localStorage.setItem('bookShop', JSON.stringify(bookList));
 });
 
 const displayBook = (book) => {
-  const {title, author,} = book;
+  const { title, author } = book;
   const bookContainer = document.createElement('div');
   bookContainer.className = 'book';
-  bookContainer.innerHTML = 
-    `<span class="title">${title}</span><br>
-    <span class="by">by</span><br>
-    <span class="author">${author} </span><br>
-    <button class="delete">Remove</button>
-    <p>_________________________</p>`
-  ;
+  bookContainer.innerHTML = `<span class='title'>${title}</span><br>
+    <span class='by'>by</span><br>
+    <span class='author'>${author} </span><br>
+    <button class='delete'>Remove</button>
+    <p>_________________________</p>`;
   return bookContainer;
 };
 
@@ -52,7 +49,9 @@ const removeBook = (button) => {
   const parentDiv = button.parentNode;
   const myTitle = parentDiv.querySelector('.title').textContent;
   const myAuthor = parentDiv.querySelector('.author').textContent;
-  const booksLeft = bookList.filter((book) => book.title !== myTitle && book.author !== myAuthor);
+  const booksLeft = bookList.filter(
+    (book) => book.title !== myTitle && book.author !== myAuthor
+  );
   window.localStorage.setItem('bookShop', JSON.stringify(booksLeft));
 
   parentDiv.remove();
