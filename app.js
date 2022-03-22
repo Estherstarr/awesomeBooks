@@ -50,7 +50,7 @@ const removeBook = (button) => {
   const myTitle = parentDiv.querySelector('.title').textContent;
   const myAuthor = parentDiv.querySelector('.author').textContent;
   const booksLeft = bookList.filter(
-    (book) => book.title !== myTitle && book.author !== myAuthor
+    (book) => book.title !== myTitle && book.author !== myAuthor,
   );
   window.localStorage.setItem('bookShop', JSON.stringify(booksLeft));
 
