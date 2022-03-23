@@ -51,6 +51,7 @@ class UI {
 
   createBook = (book) => {
     const booksContainer = document.querySelector('#books-list');
+    booksContainer.className = 'booksList';
     const bookContainer = document.createElement('div');
     bookContainer.className = 'single-book';
     const authorContainer = document.createElement('div');
