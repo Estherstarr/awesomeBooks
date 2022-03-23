@@ -5,10 +5,10 @@ const bookTitl = document.querySelector('#title');
 const bookAutho = document.querySelector('#author');
 
 class Book {
-    constructor(title, author) {
-      this.title = title;
-      this.author = author;
-    }
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
 }
 
 class Store {
@@ -16,7 +16,7 @@ class Store {
     let books;
     if (JSON.parse(localStorage.getItem('bookShop')) === null) {
       books = [];
-    }else {
+    } else {
       books = JSON.parse(localStorage.getItem('bookShop'));
     }
     return books;
