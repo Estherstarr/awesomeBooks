@@ -3,10 +3,10 @@ const bookTitl = document.querySelector('#title');
 const bookAutho = document.querySelector('#author');
 
 class Book {
-    constructor(title, author) {
-      this.title = title;
-      this.author = author;
-    }
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
 }
 
 class Store {
@@ -14,17 +14,17 @@ class Store {
     let books;
     if (JSON.parse(localStorage.getItem('bookShop')) === null) {
       books = [];
-    }else {
+    } else {
       books = JSON.parse(localStorage.getItem('bookShop'));
     }
     return books;
-  }
+  };
 
   addBook = (book) => {
     const books = this.getBooks();
     books.push(book);
     localStorage.setItem('bookShop', JSON.stringify(books));
-  }
+  };
 
   removeBook = (button) => {
     const books = JSON.parse(localStorage.getItem('bookShop'));
@@ -35,7 +35,7 @@ class Store {
       (book) => book.title !== myTitle && book.author !== myAuthor,
     );
     window.localStorage.setItem('bookShop', JSON.stringify(booksLeft));
-  }
+  };
 }
 
 class UI {
@@ -45,7 +45,7 @@ class UI {
     books.forEach((book) => {
       this.createBook(book);
     });
-  }
+  };
 
   createBook = (book) => {
     const booksContainer = document.querySelector('#books-list');
@@ -68,28 +68,29 @@ class UI {
     bookContainer.append(authorContainer, removeButton);
 
     booksContainer.appendChild(bookContainer);
-  }
+  };
 
   addBook = (book) => {
     this.createBook(book);
-  }
+  };
 
   removeBook = (button) => {
     const parentDiv = button.parentNode;
     parentDiv.remove();
-  }
+  };
 
   clearInputs = () => {
     bookTitl.value = '';
     bookAutho.value = '';
-  }
+  };
 }
 
-const addBook = (bookTitl, bookAutho) => {
+// const addBook = (bookTitl, bookAutho) => {
+
   const book = {};
   book.title = bookTitl.value;
   book.author = bookAutho.value;
-  bookList.push(book);
+  books.push(book);
 
   bookTitl.value = '';
   bookAutho.value = '';
@@ -112,7 +113,7 @@ addbookBtn.addEventListener('click', () => {
 document.addEventListener('click', (e) => {
   const button = e.target;
   if (button.className === 'delete') {
-    mainPage.removeBook(button);
+    viewBook.removeBook(button);
     store.removeBook(button);
   }
 });
