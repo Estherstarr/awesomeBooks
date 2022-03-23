@@ -4,6 +4,38 @@ body {
   box-sizing: border-box;
 }
 
+a,
+li,
+ul {
+  text-decoration: none;
+  list-style: none;
+}
+
+.head-class {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  margin: 10px 20px;
+  padding: 0 20px;
+}
+
+.list-bar {
+  display: flex;
+  gap: 30px;
+  margin: 0;
+}
+
+.list-bar > li {
+  border-right: 2px solid black;
+  padding: 0 10px;
+  width: max-content;
+}
+
+.ct-nav {
+  border: none;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -71,4 +103,33 @@ main {
 
 #add-book {
   width: 50px;
+}
+
+#contactSection {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+footer {
+  border: 3px solid black;
+  text-align: left;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+
+footer > h3 {
+  padding-left: 15px;
+}
+
+#calender {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 4%;
 }
