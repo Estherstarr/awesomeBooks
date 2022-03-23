@@ -8,39 +8,43 @@
     <title>Awesome Books</title>
   </head>
   <body>
-    <header>
-      <h1>Awesome Books</h1>
+    <header class="head-class">
+      <h3>Awesome Books</h3>
+      <nav class="nav-bar">
+        
+        <ul class="list-bar">
+          <li>List</li>
+          <li>Add New</li>
+          <li id="ct-nav">Contact</li>
+        </ul>
+      </nav>
     </header>
     <main>
-      <section id="books-list"></section>
 
-      <section id="add-books">
-        <form id="books-form">
-          <div class="form-field">
-            <label for="title"></label>
-            <input
+      <section class="books-container">
+        
+        <div id="books-list"></div>
+      </section>
+
+      <section id="add-books" class="hide-content">
+        <h1>Add a Book</h1>
+        <form id="books-form ">
+          <input
               type="text"
               id="title"
               name="title"
               placeholder="Title"
             />
-            <small></small>
-          </div>
-          <div class="form-field">
-            <label for="author"></label>
             <input
               type="text"
               name="author"
               id="author"
               placeholder="Author"
             />
-            <small></small>
-          </div>
           <button type="submit" class="btn" id="add-book">Add</button>
         </form>
       </section>
     </main>
-
     <script src="app.js"></script>
   </body>
 </html>
