@@ -1,8 +1,13 @@
 /* eslint-disable max-classes-per-file */
 
+import luxon from './date_app.js';
+
 const addbookBtn = document.querySelector('#add-book');
 const bookTitl = document.querySelector('#title');
 const bookAutho = document.querySelector('#author');
+const addLinkPage = document.querySelector('#add-books');
+const contactLinkPage = document.querySelector('#contactSection');
+const displayLinkPage = document.querySelector('.books-container');
 
 class Book {
   constructor(title, author) {
@@ -88,9 +93,18 @@ class UI {
   };
 }
 
+const Calender = document.querySelector('#calender');
+const dateTime = luxon.DateTime.local().toLocaleString(luxon.DateTime.DATETIME_FULL);
+Calender.textContent = dateTime;
+
 const viewBook = new UI();
 const store = new Store();
-document.addEventListener('DOMContentLoaded', viewBook.displayBooks());
+
+document.addEventListener('DOMContentLoaded', () => {
+  viewBook.displayBooks();
+  contactLinkPage.style.display = 'none';
+  addLinkPage.style.display = 'none';
+});
 
 addbookBtn.addEventListener('click', () => {
   const title = bookTitl.value;
@@ -107,5 +121,17 @@ document.addEventListener('click', (e) => {
   if (button.className === 'delete') {
     viewBook.removeBook(button);
     store.removeBook(button);
-  }
+  } else if (button.parentNode.id === 'lt-nav') {
+    contactLinkPage.style.display = 'none';
+    displayLinkPage.style.display = 'flex';
+    addLinkPage.style.display = 'none';
+  } else if (button.parentNode.id === 'ad-nav') {
+    contactLinkPage.style.display = 'none';
+    displayLinkPage.style.display = 'none';
+    addLinkPage.style.display = 'flex';
+  } else if (button.parentNode.id === 'ct-nav') {
+    contactLinkPage.style.display = 'flex';
+    displayLinkPage.style.display = 'none';
+    addLinkPage.style.display = 'none';
+  } 
 });
