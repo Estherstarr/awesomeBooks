@@ -2,6 +2,50 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
+}
+
+a,
+li,
+ul {
+  text-decoration: none;
+  list-style: none;
+}
+
+.head-class{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  margin: 10px 20px;
+  padding: 0px 20px;
+}
+
+/* .nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+
+} */
+
+.list-bar{
+  display: flex;
+  gap: 30px;
+  margin: 0px;
+  
+  
+  
+}
+
+.list-bar > li{
+  border-right: 2px solid black;
+  padding: 0 10px; 
+  width: max-content;
+} 
+
+#ct-nav{
+  border: none;
+
 }
 
 main {
@@ -71,4 +115,8 @@ main {
 
 #add-book {
   width: 50px;
+}
+
+.hide-content {
+  display: none;
 }
