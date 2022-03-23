@@ -21,12 +21,6 @@ ul {
   padding: 0px 20px;
 }
 
-/* .nav-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; 
-
-} */
 
 .list-bar{
   display: flex;
@@ -45,7 +39,6 @@ ul {
 
 .ct-nav{
   border: none;
-
 }
 
 main {
