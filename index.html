@@ -11,22 +11,19 @@
     <header class="head-class">
       <h3>Awesome Books</h3>
       <nav class="nav-bar">
-        
         <ul class="list-bar">
-          <li>List</li>
-          <li>Add New</li>
-          <li id="ct-nav">Contact</li>
+          <li id="lt-nav"><a href="#">List</a></li>
+          <li id="ad-nav"><a href="#">Add New</a></li>
+          <li id="ct-nav"><a href="#">Contact</a></li>
         </ul>
       </nav>
     </header>
+    <span id="calender"></span>
     <main>
-
       <section class="books-container">
-        
         <div id="books-list"></div>
       </section>
-
-      <section id="add-books" class="hide-content">
+      <section id="add-books">
         <h1>Add a Book</h1>
         <form id="books-form ">
           <input
@@ -44,7 +41,7 @@
           <button type="submit" class="btn" id="add-book">Add</button>
         </form>
       </section>
-      <section class="contact hide-content">
+      <section id="contactSection">
         <div class="contact-info">
           <h3 class="contact-title">Contact Information</h3>
           <p>
@@ -58,11 +55,11 @@
           </ul>
         </div>
       </section>
-     
     </main>
     <footer>
       <h3>Copyright 2022</h3>
     </footer>
-    <script src="app.js"></script>
+    <script type="module" src="./app.js"></script>
+    <script type="module" src="./date_app.js"></script>
   </body>
 </html>
