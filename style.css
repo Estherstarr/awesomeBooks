@@ -120,3 +120,17 @@ main {
 .hide-content {
   display: none;
 }
+footer {
+  border: 3px solid black;
+  text-align: left;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-bottom: 5px;
+  background-color: #fff;
+}
+
+footer > h3 {
+  padding-left: 15px;
+}
