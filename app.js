@@ -1,3 +1,5 @@
+/* eslint-disable max-classes-per-file */
+
 const addbookBtn = document.querySelector('#add-book');
 const bookTitl = document.querySelector('#title');
 const bookAutho = document.querySelector('#author');
@@ -84,17 +86,6 @@ class UI {
     bookAutho.value = '';
   };
 }
-
-// const addBook = (bookTitl, bookAutho) => {
-
-  const book = {};
-  book.title = bookTitl.value;
-  book.author = bookAutho.value;
-  books.push(book);
-
-  bookTitl.value = '';
-  bookAutho.value = '';
-};
 
 const viewBook = new UI();
 const store = new Store();
