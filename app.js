@@ -133,5 +133,5 @@ document.addEventListener('click', (e) => {
     contactLinkPage.style.display = 'flex';
     displayLinkPage.style.display = 'none';
     addLinkPage.style.display = 'none';
-  } 
+  }
 });
